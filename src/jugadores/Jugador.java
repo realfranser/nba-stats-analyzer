@@ -1,22 +1,19 @@
-package Jugadores;
+package jugadores;
 
 public class Jugador {
 
-    String nombre;
-    String apellido;
-    float ppp; // Puntos Por Partido [PPP]
-    float nota;
+    private String nombre;
+    private String apellido;
+    private float ppp; // Puntos Por Partido [PPP]
+    private float nota;
 
-    // Empty construct
-    public Jugador(){
-    }
     // Full construct
-    public Jugador(String nombre, String apellido, float ppp, float media){
+    public Jugador(final String nombre, final String apellido, final float ppp, final float nota){
 
-        this.setNombre(nombre);
-        this.setApellido(apellido);
-        this.setPPP(ppp);
-        this.setNota(media);
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.ppp = ppp;
+        this.nota = nota;
     }
 
     // Setters
