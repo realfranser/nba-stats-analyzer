@@ -52,7 +52,7 @@ public class JFramePrincipal extends JFrame{
 //Enviamos el texto que ha introducido el Cliente
                 String texto = textArea.getText();
                 a.texto = texto;
-                a.doWake();
+                //a.doWake();
             }
         });
         btnBuscar.setBounds(391, 49, 115, 29);

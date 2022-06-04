@@ -1,7 +1,7 @@
-[{"nombre":"Nikola","apellido":"Jokic","puntos/partido":27.1,"nota":32.94},
-  {"nombre":"Russell","apellido":"Westbrook","puntos/partido":18.5,"nota":15.01},
-  {"nombre":"Stephen","apellido":"Curry","puntos/partido":25.5,"nota":21.47},
-  {"nombre":"Jordan","apellido":"Poole","puntos/partido":26.3,"nota":16.20},
-  {"nombre":"Luka","apellido":"Doncic","puntos/partido":18.5,"nota":25.13},
-  {"nombre":"Andrew","apellido":"Wigging","puntos/partido":17.2,"nota":15.04},
-  {"nombre":"Tyler","apellido":"Herro","puntos/partido":20.7,"nota":16.30}]
+[{"nombre":"Nikola","apellido":"Jokic","puntos/partido":27.1,"nota":32.94,"salario":33},
+  {"nombre":"Russell","apellido":"Westbrook","puntos/partido":18.5,"nota":15.01,"salario":45},
+  {"nombre":"Stephen","apellido":"Curry","puntos/partido":25.5,"nota":21.47,"salario":42},
+  {"nombre":"Jordan","apellido":"Poole","puntos/partido":26.3,"nota":16.20,"salario":3},
+  {"nombre":"Luka","apellido":"Doncic","puntos/partido":18.5,"nota":25.13,"salario":37},
+  {"nombre":"Andrew","apellido":"Wigging","puntos/partido":17.2,"nota":15.04,"salario":36},
+  {"nombre":"Tyler","apellido":"Herro","puntos/partido":20.7,"nota":16.30,"salario":14}]
