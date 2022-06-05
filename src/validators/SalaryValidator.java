@@ -11,6 +11,6 @@ public class SalaryValidator {
 
     public static boolean isValidSalary(final float salary) {
 
-        return salary < SALARIO_MINIMO || salary > SALARIO_MAXIMO;
+        return salary > SALARIO_MINIMO && salary < SALARIO_MAXIMO;
     }
 }

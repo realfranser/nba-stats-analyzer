@@ -39,6 +39,7 @@ public class CyclicBehaviourReceiveMessage extends CyclicBehaviour {
             if(message.getContent().equals("Mostrar")){
                 ACLMessage msg1 = new ACLMessage(7);
                 try {
+                    this.listaJugadores = DataAgent.leerlista();
                     msg1.setContentObject(this.listaJugadores);
                 }catch (IOException e){
                     e.printStackTrace();
@@ -54,14 +55,10 @@ public class CyclicBehaviourReceiveMessage extends CyclicBehaviour {
                 }
 
                 try {
-                    ArrayList<String> data = (ArrayList)message.getContentObject();
-                    // Suponiendo 0 = nombre 1 = apellido 2 = salario
-                    String nombre = data.get(0);
-                    String apellido = data.get(1);
-                    float salario = Float.parseFloat(data.get(2));
+                    final Jugador nuevoJugador = (Jugador)message.getContentObject();
 
                     try {
-                        this.agente.actualizarSalario(nombre,apellido,salario);
+                        this.agente.actualizarSalario(nuevoJugador);
                     }catch (IOException e){
                         e.printStackTrace();
                     }

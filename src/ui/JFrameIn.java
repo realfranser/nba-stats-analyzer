@@ -170,6 +170,10 @@ public class JFrameIn extends JFrame implements ActionListener {
 
     }
 
+    public Jugador getNuevoJugador() {
+        return this.nuevoJugador;
+    }
+
     public JTextField getTextJugador() {
         return nombreJugador;
     }

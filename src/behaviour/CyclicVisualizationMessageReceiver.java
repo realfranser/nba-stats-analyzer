@@ -22,13 +22,14 @@ public class CyclicVisualizationMessageReceiver extends CyclicBehaviour {
     public void action() {
         ACLMessage message = this.myAgent.receive(MessageTemplate.MatchPerformative(ACLMessage.INFORM));
 
+        System.out.println("Se recibio mostrar: Mostrando...");
+
         if (message != null) {
             try {
-                message.setContentObject(this.listaJugadores);
                 this.listaJugadores = (ArrayList<Jugador>) message.getContentObject();
                 ((VisualizationAgent) this.myAgent).getChatJFrame().setText(this.listaJugadores);
                 ((VisualizationAgent) this.myAgent).setListaJugadores(this.listaJugadores);
-            } catch (IOException | UnreadableException e) {
+            } catch (UnreadableException e) {
                 e.printStackTrace();
             }
         } else {
