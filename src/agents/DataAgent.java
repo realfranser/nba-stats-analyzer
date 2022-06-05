@@ -2,7 +2,7 @@ package agents;
 
 import behaviour.CyclicBehaviourReceiveMessage;
 import jugadores.Jugador;
-import ui.JFramePrincipal;
+import ui.JFrameIn;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -28,12 +28,12 @@ public class DataAgent extends Agent {
     private static final String SERVICE_NAME = "Data Communicator";
     private static final String SERVER_TYPE = "Raw Data Communication";
 
-    private static final float NOTA_MINIMA = 0;
-    private static final float NOTA_MAXIMA = 10;
+    private static final float SALARIO_MINIMO = 5;
+    private static final float SALARIO_MAXIMO = 150;
 
     private ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
     private String filePath = "";
-    private JFramePrincipal chatJFrame;
+    private JFrameIn chatJFrame;
     public String texto = "PAX";
     protected CyclicBehaviourReceiveMessage receiveMessageBehaviour;
 
@@ -43,7 +43,7 @@ public class DataAgent extends Agent {
         /*
         this.chatJFrame = new ChatJFrame(this);
          */
-        this.receiveMessageBehaviour = new CyclicBehaviourReceiveMessage();
+        this.receiveMessageBehaviour = new CyclicBehaviourReceiveMessage(this);
     }
 
     @Override
@@ -89,9 +89,11 @@ public class DataAgent extends Agent {
         send(message);
     }
 
-    public JFramePrincipal getChatJFrame() { return this.chatJFrame; }
+    public JFrameIn getChatJFrame() { return this.chatJFrame; }
 
-    private ArrayList<Jugador> leerlista() throws IOException{
+    public void setListaJugadores(ArrayList<Jugador> lista) { this.listaJugadores = lista;}
+    public ArrayList<Jugador> getListaJugadores(){ return this.listaJugadores;}
+    public ArrayList<Jugador> leerlista() throws IOException{
         final ArrayList<Jugador> jugadores;
         final FileReader jugadoresFile = new FileReader(filePath);
         final Type tokenType = new TypeToken<ArrayList<Jugador>>(){}.getType();
@@ -102,14 +104,14 @@ public class DataAgent extends Agent {
         return jugadores;
     }
 
-    private void actualizarNota(final String nombre, final String apellido, final float nota) throws IOException{
+    public void actualizarSalario(final String nombre, final String apellido, final float salario) throws IOException{
 
-        if (nota < NOTA_MINIMA || nota > NOTA_MAXIMA)
-            loge(String.format("La nota debe estar comprendida entre %s y %s", NOTA_MINIMA, NOTA_MAXIMA));
+        if (salario < SALARIO_MINIMO || salario > SALARIO_MAXIMO)
+            loge(String.format("El salario debe estar comprendida entre %s y %s", SALARIO_MAXIMO, SALARIO_MINIMO));
 
         for (Jugador jugador : listaJugadores) {
             if(jugador.getNombre().equals(nombre) && jugador.getApellido().equals(apellido)){
-                jugador.setNota(nota);
+                jugador.setSalario(salario);
                 break;
             }
         }
@@ -117,7 +119,7 @@ public class DataAgent extends Agent {
         escribirLista(listaJugadores);
     }
 
-    private void escribirLista(final ArrayList<Jugador> jugadores) throws IOException{
+    public void escribirLista(final ArrayList<Jugador> jugadores) throws IOException{
         final FileWriter jugadoresFile = new FileWriter(filePath);
         final Gson gson = new Gson();
 

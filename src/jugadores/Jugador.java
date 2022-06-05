@@ -1,5 +1,7 @@
 package jugadores;
 
+import java.util.ArrayList;
+
 public class Jugador {
 
     private String nombre;
@@ -37,6 +39,16 @@ public class Jugador {
 
     @Override
     public String toString(){
-        return "Nombre: "+nombre+", Apellido: "+ apellido + ", PPP: "+ ppp+ ", Nota: "+ nota + ", Salario: " + salario;
+        return "Nombre: " + nombre + apellido + "\n"
+                + ", PPP: " + ppp + ", Nota: " + nota + ", Salario: " + salario
+                + "\n";
+    }
+
+    public static String jugadoresToString(final ArrayList<Jugador> jugadores) {
+
+        String stringJugadores = "Lista de jugadores";
+        for(Jugador jugador : jugadores) { stringJugadores += jugador.toString();}
+
+        return stringJugadores;
     }
 }
