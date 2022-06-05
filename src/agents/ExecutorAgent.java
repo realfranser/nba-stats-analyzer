@@ -52,7 +52,6 @@ public class ExecutorAgent extends GuiAgent {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    msg.setContent("Cambiar");
                     msg.addReceiver(new AID("DataAgent",AID.ISLOCALNAME));
 
                     send(msg);
