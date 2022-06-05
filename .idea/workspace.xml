@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2a6868f-e169-42dc-8458-596682cd5336" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/agents/DataAgent$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/agents/DataAgent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/agents/ExecutorAgent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/behaviour/CyclicBehaviourReceiveMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/ui/JFrameIn$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/ui/JFrameIn.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agents/DataAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/DataAgent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/agents/ExecutorAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/ExecutorAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agents/VisualizationAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/VisualizationAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/behaviour/CyclicBehaviourReceiveMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behaviour/CyclicBehaviourReceiveMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/behaviour/CyclicVisualizationMessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behaviour/CyclicVisualizationMessageReceiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/JFrameIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JFrameIn.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,11 +53,11 @@
     <property name="project.structure.side.proportion" value="0.32068965" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Application.ExecutorAgent">
-    <configuration name="DataAgent" type="Application" factoryName="Application">
+  <component name="RunManager">
+    <configuration name="All Agents" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="jade.Boot" />
       <module name="nba-stats-analyzer" />
-      <option name="PROGRAM_PARAMETERS" value="-gui DataAgent:agents.DataAgent" />
+      <option name="PROGRAM_PARAMETERS" value="-gui DataAgent:agents.DataAgent;ExecutorAgent:agents.ExecutorAgent;Visualization:agents.VisualizationAgent" />
       <extension name="net.ashald.envfile">
         <option name="IS_ENABLED" value="false" />
         <option name="IS_SUBST" value="false" />
@@ -62,47 +72,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExecutorAgent" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="jade.Boot" />
-      <module name="nba-stats-analyzer" />
-      <option name="PROGRAM_PARAMETERS" value="-main false ExecutorAgent:agents.ExecutorAgent" />
-      <extension name="net.ashald.envfile">
-        <option name="IS_ENABLED" value="false" />
-        <option name="IS_SUBST" value="false" />
-        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
-        <option name="IS_IGNORE_MISSING_FILES" value="false" />
-        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
-        <ENTRIES>
-          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
-        </ENTRIES>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="VisualizationAgent" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="jade.Boot" />
-      <module name="nba-stats-analyzer" />
-      <option name="PROGRAM_PARAMETERS" value="-main false VisualizationAgent:agents.VisualizationAgent" />
-      <extension name="net.ashald.envfile">
-        <option name="IS_ENABLED" value="false" />
-        <option name="IS_SUBST" value="false" />
-        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
-        <option name="IS_IGNORE_MISSING_FILES" value="false" />
-        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
-        <ENTRIES>
-          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
-        </ENTRIES>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.VisualizationAgent" />
-      <item itemvalue="Application.DataAgent" />
-      <item itemvalue="Application.ExecutorAgent" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -114,6 +83,7 @@
       <updated>1653938099801</updated>
       <workItem from="1654359753371" duration="6785000" />
       <workItem from="1654369606334" duration="2836000" />
+      <workItem from="1654452654935" duration="1159000" />
     </task>
     <servers />
   </component>

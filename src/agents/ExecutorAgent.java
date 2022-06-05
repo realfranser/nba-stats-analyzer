@@ -60,7 +60,7 @@ public class ExecutorAgent extends GuiAgent {
                     send(msg);
                 }
             });
-        } else if (button== 2) {
+        } else if (button == 2) {
             System.out.println("reciviendo llamada lista de jugadores");
             addBehaviour(new OneShotBehaviour() {
                 private static final long serialVersionUID = 1L;
