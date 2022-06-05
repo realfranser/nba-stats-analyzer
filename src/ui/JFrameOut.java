@@ -40,7 +40,6 @@ public class JFrameOut extends JFrame{
         newlabel.setBounds(50,15,460,30);
         this.panel.add(newlabel);
 
-        //register.setEnabled(false); // no descomentar o no se vera  en negro sino en azul raro
         register.setEditable(false);
         register.setForeground(Color.BLACK);
         register.setBounds(25,50,500,500);

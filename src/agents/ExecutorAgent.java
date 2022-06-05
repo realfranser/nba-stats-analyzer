@@ -1,6 +1,7 @@
 package agents;
 
 import jade.core.Agent;
+import jugadores.Jugador;
 import ui.*;
 
 import jade.core.AID;
@@ -26,7 +27,7 @@ public class ExecutorAgent extends GuiAgent {
 
     private int button = WAIT;
 
-    public  JFrameIn myGui;
+    public JFrameIn myGui;
 
     protected void setup() {
         myGui = new JFrameIn(this);
@@ -37,11 +38,8 @@ public class ExecutorAgent extends GuiAgent {
     protected void onGuiEvent(GuiEvent ev) {
         button = ev.getType();
 
-        if (button== 1) {
-            ArrayList <String> data = new ArrayList <String>();
-
-            data.add(myGui.getTextJugador().getText());
-            data.add(myGui.getTextSalario().getText());
+        if (button == 1) {
+            final Jugador nuevoJugador = myGui.getNuevoJugador();
 
             addBehaviour(new OneShotBehaviour() {
                 private static final long serialVersionUID = 1L;
@@ -50,11 +48,10 @@ public class ExecutorAgent extends GuiAgent {
                     ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 
                     try {
-                        msg.setContentObject(data);
+                        msg.setContentObject(nuevoJugador);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    msg.setContent("Nuevo salario");
                     msg.addReceiver(new AID("DataAgent",AID.ISLOCALNAME));
 
                     send(msg);
@@ -68,43 +65,14 @@ public class ExecutorAgent extends GuiAgent {
                 public void action() {
                     ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 
-                    msg.setContent("Lista de jugadores");
+                    msg.setContent("Mostrar");
                     msg.addReceiver(new AID("DataAgent",AID.ISLOCALNAME));
 
                     send(msg);
-                    System.out.println("llamo a mostrar");
+                    System.out.println("Mostrar");
                 }
             });
 
         }
     }
-
-    /*
-    public void doDelete() {
-        super.doDelete();
-        loge(": Exit!!!");
-    }
-
-
-
-    private void sendMessage(final String text) {
-        ACLMessage message = new ACLMessage(ACLMessage.CONFIRM);
-
-        Add receiver agents of the message
-        message.addReceiver();
-
-        Add message content (if necessary)
-        message.setContent();
-
-        send(message);
-    }
-
-    private void log(String s){
-        System.out.println(System.currentTimeMillis() + ": " + getLocalName() + "(" + getClass().getSimpleName() + ") " + s);
-    }
-
-    private void loge(String s) {
-        System.err.println(System.currentTimeMillis() + ": " + getLocalName() + "(" + getClass().getSimpleName() + ") " + s);
-    }
-    */
 }

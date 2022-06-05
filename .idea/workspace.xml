@@ -3,18 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f2a6868f-e169-42dc-8458-596682cd5336" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/agents/DataAgent$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/agents/DataAgent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/agents/ExecutorAgent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/behaviour/CyclicBehaviourReceiveMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/ui/JFrameIn$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/nba-stats-analyzer/ui/JFrameIn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agents/DataAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/DataAgent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/agents/ExecutorAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/ExecutorAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agents/VisualizationAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/VisualizationAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/behaviour/CyclicBehaviourReceiveMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behaviour/CyclicBehaviourReceiveMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/behaviour/CyclicVisualizationMessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behaviour/CyclicVisualizationMessageReceiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/JFrameIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JFrameIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/JFrameOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JFrameOut.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +48,7 @@
     <configuration name="All Agents" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="jade.Boot" />
       <module name="nba-stats-analyzer" />
-      <option name="PROGRAM_PARAMETERS" value="-gui DataAgent:agents.DataAgent;ExecutorAgent:agents.ExecutorAgent;Visualization:agents.VisualizationAgent" />
+      <option name="PROGRAM_PARAMETERS" value="-gui DataAgent:agents.DataAgent;ExecutorAgent:agents.ExecutorAgent;VisualizationAgent:agents.VisualizationAgent" />
       <extension name="net.ashald.envfile">
         <option name="IS_ENABLED" value="false" />
         <option name="IS_SUBST" value="false" />
@@ -83,7 +74,8 @@
       <updated>1653938099801</updated>
       <workItem from="1654359753371" duration="6785000" />
       <workItem from="1654369606334" duration="2836000" />
-      <workItem from="1654452654935" duration="1159000" />
+      <workItem from="1654452654935" duration="3025000" />
+      <workItem from="1654455738037" duration="3625000" />
     </task>
     <servers />
   </component>
@@ -105,6 +97,17 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/agents/ExecutorAgent.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
