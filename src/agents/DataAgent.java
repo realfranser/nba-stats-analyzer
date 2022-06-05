@@ -13,6 +13,7 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
+import validators.SalaryValidator;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -27,9 +28,6 @@ public class DataAgent extends Agent {
     private static final long serialVersionUID = 1L;
     private static final String SERVICE_NAME = "Data Communicator";
     private static final String SERVER_TYPE = "Raw Data Communication";
-
-    private static final float SALARIO_MINIMO = 5;
-    private static final float SALARIO_MAXIMO = 150;
 
     private ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
     private String filePath = "";
@@ -106,8 +104,8 @@ public class DataAgent extends Agent {
 
     public void actualizarSalario(final String nombre, final String apellido, final float salario) throws IOException{
 
-        if (salario < SALARIO_MINIMO || salario > SALARIO_MAXIMO)
-            loge(String.format("El salario debe estar comprendida entre %s y %s", SALARIO_MAXIMO, SALARIO_MINIMO));
+        if (!SalaryValidator.isValidSalary(salario))
+            loge(SalaryValidator.SALARY_VALIDATOR_ERROR);
 
         for (Jugador jugador : listaJugadores) {
             if(jugador.getNombre().equals(nombre) && jugador.getApellido().equals(apellido)){

@@ -4,6 +4,8 @@ import agents.ExecutorAgent;
 import com.google.gson.Gson;
 import jade.gui.GuiEvent;
 import jugadores.Jugador;
+import validators.NameValidator;
+import validators.SalaryValidator;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -36,6 +38,8 @@ public class JFrameIn extends JFrame implements ActionListener {
     private JButton darSalario;
     private JButton listaJugadores;
 
+    private Jugador nuevoJugador;
+
     public JFrameIn(ExecutorAgent a) {
         myAgent = a;
 
@@ -55,7 +59,7 @@ public class JFrameIn extends JFrame implements ActionListener {
         JLabel lblnombre = new JLabel("Inserte el nombre del jugador sobre el que modificar el salario: ");
 
         lblnombre.setFont(new Font("Arial", Font.BOLD, 13));
-        lblnombre.setBounds(110, 20, 350, 50);
+        lblnombre.setBounds(60, 20, 450, 50);
         contentPane.add(lblnombre);
 
         nombreJugador = new JTextField();
@@ -85,14 +89,14 @@ public class JFrameIn extends JFrame implements ActionListener {
         darSalario= new JButton("Nuevo Salario ");
         darSalario.addActionListener(this);
         darSalario.setFont(new Font("Arial", Font.BOLD, 12));
-        darSalario.setBounds(103, 218, 103, 23);
+        darSalario.setBounds(90, 218, 130, 23);
 
         contentPane.add(darSalario);
 
-        listaJugadores= new JButton("Visualizar stock ");
+        listaJugadores= new JButton("Visualizar lista de jugadores");
         listaJugadores.addActionListener(this);
         listaJugadores.setFont(new Font("Arial", Font.BOLD, 12));
-        listaJugadores.setBounds(206, 218, 200, 23);
+        listaJugadores.setBounds(220, 218, 200, 23);
 
         contentPane.add(listaJugadores);
 
@@ -101,83 +105,69 @@ public class JFrameIn extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent AE) {
-        String cod= nombreJugador.getText();
-        //char[] compCod= cod.toCharArray();
-        boolean fail = false;
-        if(AE.getSource()== darSalario) {
-            for(int i = 0; i<cod.length() && !fail; i++) {
-                char c = cod.charAt(i);
-                if(!(c>='a' && c<='z' && c>='A' && c<='Z' && c == ' ')) {					//si el nombre del jugador tiene algo diferente a una letra
-                    nombreJugador.setBackground(Color.WHITE);
-                    salario.setBackground(Color.WHITE);
-                    JOptionPane.showMessageDialog(contentPane, "El nombre del jugador solo debe contener letras.", "ERROR", 0);
-                    nombreJugador.setBackground(new Color(255,255,0));
-                    nombreJugador.requestFocus();
+        final String nombre = this.nombreJugador.getText();
 
-                    fail = true;
-                }
-            }
-            if(!fail) {
-                /*if(compCod.length != 4) {
-                    codigoBarras.setBackground(Color.WHITE);
-                    calification.setBackground(Color.WHITE);
+        if(AE.getSource() == listaJugadores){
+            final GuiEvent GE = new GuiEvent(this, 2);
+            this.myAgent.postGuiEvent(GE);
+            return;
+        }
 
-                    JOptionPane.showMessageDialog(contentPane, "El código de barras debe contener 4 números.", "ERROR", 0);
+        if (AE.getSource() != darSalario) { return; }
 
-                    codigoBarras.setBackground(new Color(255,255,0));
-                    codigoBarras.requestFocus();
-                }*/
-                if(Double.parseDouble(salario.getText())< 0 || Double.parseDouble(salario.getText())> 100000000) {
-                    nombreJugador.setBackground(Color.WHITE);
+        if (!NameValidator.isValidName(nombre)) {
+            this.nombreJugador.setBackground(Color.WHITE);
+            salario.setBackground(Color.WHITE);
+            JOptionPane.showMessageDialog(contentPane, NameValidator.NAME_ERROR, NameValidator.NAME_ERROR_TITLE, JOptionPane.ERROR_MESSAGE);
+            this.nombreJugador.setBackground(new Color(255,255,0));
+            this.nombreJugador.requestFocus();
+        }
 
-                    salario.setBackground(Color.WHITE);
+        if (!SalaryValidator.isValidSalary(Float.parseFloat(salario.getText()))) {
+            this.nombreJugador.setBackground(Color.WHITE);
+            this.salario.setBackground(Color.WHITE);
+            JOptionPane.showMessageDialog(contentPane, SalaryValidator.SALARY_VALIDATOR_ERROR, SalaryValidator.SALARY_ERROR_TYPE, JOptionPane.ERROR_MESSAGE);
+            this.nombreJugador.setBackground(Color.BLUE);
+            this.nombreJugador.requestFocus();
+        }
 
-                    JOptionPane.showMessageDialog(contentPane, "Calificacion incorrecta, debe contener solo números del 0 a 100 millones.", "ERROR", 0);
+        ArrayList<Jugador> listaJugadores;
 
-                    nombreJugador.setBackground(Color.BLUE);
-                    nombreJugador.requestFocus();
-                }
-                else {
-                    ArrayList<Jugador> Jugadores;
-                    try {
-                        Jugadores = leemosJugadores();
-                        for(Jugador p : Jugadores) {									//comprobamos que el codigo de barras existe
+        try {
+            listaJugadores = leemosJugadores();
 
-                            if(!(cod.equals(p.getNombre()))) {
-                                nombreJugador.setBackground(Color.WHITE);
-                                salario.setBackground(Color.WHITE);
-                                JOptionPane.showMessageDialog(contentPane, "El jugador no existe.", "ERROR", 0);
-                                nombreJugador.setBackground(new Color(255,255,0));
-                                nombreJugador.requestFocus();
+            boolean jugadorEncontrado = false;
+            for (Jugador jugador : listaJugadores) {
 
-                                fail = true;
-                            }
-                        }
-                    }
-                    catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                if (jugador.getNombre().equals(nombre)) {
+                    jugador.setSalario(Float.parseFloat(this.salario.getText()));
+                    this.nuevoJugador = jugador;
+                    jugadorEncontrado = true;
 
                     JOptionPane.showMessageDialog(contentPane, "El nombre se ha insertado con exito.", "OK", 1);
-
-                    GuiEvent GE= new GuiEvent(this, 1);			//"calificar"
+                    GuiEvent GE= new GuiEvent(this, 1);
                     myAgent.postGuiEvent(GE);
 
-                    //reseteamos los campos
-                    nombreJugador.setText("");
-                    nombreJugador.setBackground(Color.WHITE);
-                    salario.setText("");
-                    salario.setBackground(Color.WHITE);
+                    break;
                 }
             }
+
+            if (!jugadorEncontrado) {
+                nombreJugador.setBackground(Color.WHITE);
+                salario.setBackground(Color.WHITE);
+                JOptionPane.showMessageDialog(contentPane, "El jugador no existe.", "ERROR", 0);
+                nombreJugador.setBackground(new Color(255,255,0));
+                nombreJugador.requestFocus();
+            }
+
+            resetInputValues();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        else if(AE.getSource()== listaJugadores){
-            GuiEvent GE= new GuiEvent(this, 2);			//"stock"
-            myAgent.postGuiEvent(GE);
-        }
+    }
+
+    private void resetInputValues() {
+
     }
 
     public JTextField getTextJugador() {

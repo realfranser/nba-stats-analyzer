@@ -29,7 +29,7 @@ public class VisualizationAgent extends Agent {
 
         this.chatJFrame = new JFrameOut(this);
         this.listaJugadores = new ArrayList<>();
-        this.receiveMessageBehaviour = new CyclicVisualizationMessageReceiver();
+        this.receiveMessageBehaviour = new CyclicVisualizationMessageReceiver(this);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class VisualizationAgent extends Agent {
     }
 
     private void receiveMessage() {
-        CyclicVisualizationMessageReceiver behaviour = new CyclicVisualizationMessageReceiver();
+        CyclicVisualizationMessageReceiver behaviour = new CyclicVisualizationMessageReceiver(this);
         addBehaviour(behaviour);
     }
 

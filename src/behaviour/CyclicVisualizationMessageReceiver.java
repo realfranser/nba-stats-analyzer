@@ -1,20 +1,23 @@
 package behaviour;
 
-import agents.DataAgent;
 import agents.VisualizationAgent;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 import jugadores.Jugador;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CyclicVisualizationMessageReceiver extends CyclicBehaviourReceiveMessage {
+public class CyclicVisualizationMessageReceiver extends CyclicBehaviour {
 
     private static final long serialVersionUID = 1L;
     private ArrayList<Jugador> listaJugadores;
+
+    public CyclicVisualizationMessageReceiver(VisualizationAgent agent) {
+        super(agent);
+    }
 
     public void action() {
         ACLMessage message = this.myAgent.receive(MessageTemplate.MatchPerformative(ACLMessage.INFORM));

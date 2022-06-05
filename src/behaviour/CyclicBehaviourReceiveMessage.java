@@ -46,7 +46,7 @@ public class CyclicBehaviourReceiveMessage extends CyclicBehaviour {
                 msg1.addReceiver(new AID("VisualizationAgent",false));
                 this.agente.send(msg1);
 
-            }else if(message.getContent().equals("Cambiar")){
+            } else if(message.getContent().equals("Cambiar")){
                 try{
                     this.listaJugadores = this.agente.leerlista() ;
                 }catch (IOException e){
