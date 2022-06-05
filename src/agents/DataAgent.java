@@ -2,7 +2,7 @@ package agents;
 
 import behaviour.CyclicBehaviourReceiveMessage;
 import jugadores.Jugador;
-import ui.JFramePrincipal;
+import ui.JFrameIn;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -33,7 +33,7 @@ public class DataAgent extends Agent {
 
     private ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
     private String filePath = "";
-    private JFramePrincipal chatJFrame;
+    private JFrameIn chatJFrame;
     public String texto = "PAX";
     protected CyclicBehaviourReceiveMessage receiveMessageBehaviour;
 
@@ -89,7 +89,7 @@ public class DataAgent extends Agent {
         send(message);
     }
 
-    public JFramePrincipal getChatJFrame() { return this.chatJFrame; }
+    public JFrameIn getChatJFrame() { return this.chatJFrame; }
 
     private ArrayList<Jugador> leerlista() throws IOException{
         final ArrayList<Jugador> jugadores;

@@ -4,18 +4,15 @@ import agents.DataAgent;
 
 import javax.swing.JFrame;
 import java.awt.EventQueue;
-import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
-import javax.swing.JPanel;
-import java.awt.Color;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class JFramePrincipal extends JFrame{
+public class JFrameIn extends JFrame{
 
     private JFrame frame;
     public JTextArea area;
@@ -24,7 +21,7 @@ public class JFramePrincipal extends JFrame{
 
         EventQueue.invokeLater(() -> {
             try {
-                JFramePrincipal window = new JFramePrincipal();
+                JFrameIn window = new JFrameIn();
                 window.frame.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -32,10 +29,10 @@ public class JFramePrincipal extends JFrame{
         });
     }
 
-    public JFramePrincipal() {
+    public JFrameIn() {
     }
 
-    public JFramePrincipal(DataAgent a) {
+    public JFrameIn(DataAgent a) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 694, 533);
