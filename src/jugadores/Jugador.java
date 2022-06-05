@@ -1,8 +1,9 @@
 package jugadores;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Jugador {
+public class Jugador implements Serializable{
 
     private String nombre;
     private String apellido;

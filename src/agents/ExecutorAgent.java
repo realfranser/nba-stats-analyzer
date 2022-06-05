@@ -54,7 +54,7 @@ public class ExecutorAgent extends GuiAgent {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    msg.setContent("Nuevo salario");
+                    msg.setContent("Cambiar");
                     msg.addReceiver(new AID("DataAgent",AID.ISLOCALNAME));
 
                     send(msg);
@@ -68,7 +68,7 @@ public class ExecutorAgent extends GuiAgent {
                 public void action() {
                     ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 
-                    msg.setContent("Lista de jugadores");
+                    msg.setContent("Mostrar");
                     msg.addReceiver(new AID("DataAgent",AID.ISLOCALNAME));
 
                     send(msg);
