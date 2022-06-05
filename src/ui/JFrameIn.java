@@ -25,14 +25,10 @@ public class JFrameIn extends JFrame implements ActionListener {
 
     private JPanel contentPane;
 
-    //private ArrayList<String> compSame = new ArrayList<String>();
-
     private ExecutorAgent myAgent;
 
-    //Codigo de barras del producto;
     private JTextField nombreJugador;
 
-    //Calificacion del usuario para producto;
     private JTextField salario;
 
     private JButton darSalario;
@@ -43,7 +39,6 @@ public class JFrameIn extends JFrame implements ActionListener {
     public JFrameIn(ExecutorAgent a) {
         myAgent = a;
 
-        //Cerramos las ventanas;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setBounds(100, 100, 550, 300);
@@ -55,7 +50,6 @@ public class JFrameIn extends JFrame implements ActionListener {
 
         contentPane.setLayout(null);
 
-        //Etiqueta codigo de barras;
         JLabel lblnombre = new JLabel("Inserte el nombre del jugador sobre el que modificar el salario: ");
 
         lblnombre.setFont(new Font("Arial", Font.BOLD, 13));
@@ -67,7 +61,6 @@ public class JFrameIn extends JFrame implements ActionListener {
         contentPane.add(nombreJugador);
         nombreJugador.setColumns(10);
 
-        //Etiqueta calificacion;
         JLabel lblSalario = new JLabel("Escriba el salario del jugador: ");
         lblSalario.setFont(new Font("Arial", Font.BOLD, 13));
         lblSalario.setBounds(50, 120, 440, 30);
@@ -190,7 +183,7 @@ public class JFrameIn extends JFrame implements ActionListener {
         this.salario= calificacion;
     }
 
-    public ArrayList<Jugador> leemosJugadores() throws FileNotFoundException, IOException {			//leemos el stock para comprobar si el codigo de barras existe
+    public ArrayList<Jugador> leemosJugadores() throws FileNotFoundException, IOException {
         ArrayList<Jugador> jugadores;
         FileReader jugadoresFile = new FileReader("jugadores.json");
         java.lang.reflect.Type mapTokenType = new com.google.gson.reflect.TypeToken<ArrayList<Jugador>>(){}.getType();

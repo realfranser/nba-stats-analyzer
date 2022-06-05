@@ -75,33 +75,4 @@ public class ExecutorAgent extends GuiAgent {
 
         }
     }
-
-    /*
-    public void doDelete() {
-        super.doDelete();
-        loge(": Exit!!!");
-    }
-
-
-
-    private void sendMessage(final String text) {
-        ACLMessage message = new ACLMessage(ACLMessage.CONFIRM);
-
-        Add receiver agents of the message
-        message.addReceiver();
-
-        Add message content (if necessary)
-        message.setContent();
-
-        send(message);
-    }
-
-    private void log(String s){
-        System.out.println(System.currentTimeMillis() + ": " + getLocalName() + "(" + getClass().getSimpleName() + ") " + s);
-    }
-
-    private void loge(String s) {
-        System.err.println(System.currentTimeMillis() + ": " + getLocalName() + "(" + getClass().getSimpleName() + ") " + s);
-    }
-    */
 }
