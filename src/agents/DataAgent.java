@@ -30,7 +30,7 @@ public class DataAgent extends Agent {
     private static final String SERVER_TYPE = "Raw Data Communication";
 
     private ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
-    private String filePath = "";
+    private String filePath = "jugadores.json";
     private JFrameIn chatJFrame;
     public String texto = "PAX";
     protected CyclicBehaviourReceiveMessage receiveMessageBehaviour;
@@ -46,7 +46,14 @@ public class DataAgent extends Agent {
 
     @Override
     protected void setup() {
-
+        try {
+            listaJugadores = leerlista();
+            for(Jugador p : listaJugadores){
+                System.out.println(p);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         final DFAgentDescription agentDescription = new DFAgentDescription();
         agentDescription.setName(getAID());
 
@@ -91,6 +98,7 @@ public class DataAgent extends Agent {
 
     public void setListaJugadores(ArrayList<Jugador> lista) { this.listaJugadores = lista;}
     public ArrayList<Jugador> getListaJugadores(){ return this.listaJugadores;}
+
     public ArrayList<Jugador> leerlista() throws IOException{
         final ArrayList<Jugador> jugadores;
         final FileReader jugadoresFile = new FileReader(filePath);
@@ -102,13 +110,13 @@ public class DataAgent extends Agent {
         return jugadores;
     }
 
-    public void actualizarSalario(final String nombre, final String apellido, final float salario) throws IOException{
+    public void actualizarSalario(final String nombre, final float salario) throws IOException{
 
         if (!SalaryValidator.isValidSalary(salario))
             loge(SalaryValidator.SALARY_VALIDATOR_ERROR);
 
         for (Jugador jugador : listaJugadores) {
-            if(jugador.getNombre().equals(nombre) && jugador.getApellido().equals(apellido)){
+            if(jugador.getNombre().equals(nombre) ){
                 jugador.setSalario(salario);
                 break;
             }

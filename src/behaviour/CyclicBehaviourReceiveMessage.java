@@ -35,6 +35,7 @@ public class CyclicBehaviourReceiveMessage extends CyclicBehaviour {
 
     public void action() {
         ACLMessage message = this.myAgent.receive(MessageTemplate.MatchPerformative(ACLMessage.INFORM));
+        System.out.println("Recibido Mostrar");
         if (message != null){
             if(message.getContent().equals("Mostrar")){
                 ACLMessage msg1 = new ACLMessage(7);
@@ -57,11 +58,10 @@ public class CyclicBehaviourReceiveMessage extends CyclicBehaviour {
                     ArrayList<String> data = (ArrayList)message.getContentObject();
                     // Suponiendo 0 = nombre 1 = apellido 2 = salario
                     String nombre = data.get(0);
-                    String apellido = data.get(1);
-                    float salario = Float.parseFloat(data.get(2));
+                    float salario = Float.parseFloat(data.get(1));
 
                     try {
-                        this.agente.actualizarSalario(nombre,apellido,salario);
+                        this.agente.actualizarSalario(nombre,salario);
                     }catch (IOException e){
                         e.printStackTrace();
                     }
